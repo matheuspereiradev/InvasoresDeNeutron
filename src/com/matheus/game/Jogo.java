@@ -64,6 +64,7 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 	private int framesGameOver = 0, maxGameOver = 20;
 	private boolean restartJogo = false;
 	public static boolean mute = true;
+	public static boolean conversar=false;
 	public boolean saveGame = false;
 	public static boolean exibirMensagem=false;
 	public static String mensagem;
@@ -77,6 +78,7 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 	public static int entrada = 1;
 	public static int comecar = 2;
 	public static int jogando = 3;
+	public static int dialogo = 4;
 	public static int estado_cena = entrada;
 	public static boolean pularFase = false; 
 
@@ -388,7 +390,7 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 				this.saveGame = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_C) {
-			if (Jogo.estado_cena == comecar)
+			if (Jogo.estado_cena == comecar||Jogo.estado_cena==dialogo)
 				pularCena = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_P) {
@@ -396,6 +398,11 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 		}
 		if (e.getKeyCode() == KeyEvent.VK_V) {
 			Jogo.jogador.vida=0;
+		}if (e.getKeyCode() == KeyEvent.VK_Q) {
+			if(Jogo.jogador.colidindoComNPC) {
+				estado_cena=dialogo;
+				conversar=true;
+			}
 		}
 
 	}

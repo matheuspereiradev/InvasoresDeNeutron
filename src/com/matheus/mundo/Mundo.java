@@ -293,7 +293,7 @@ public class Mundo {
 		Jogo.municao.clear();
 		Jogo.arma.clear();
 		Jogo.balas.clear();
-		Jogo.lava.clear();
+		Jogo.npc.clear();
 		Jogo.morte.clear();
 
 		Jogo.entidades = new ArrayList<Entidade>();
@@ -302,7 +302,7 @@ public class Mundo {
 		Jogo.municao = new ArrayList<Municao>();
 		Jogo.arma = new ArrayList<Arma>();
 		Jogo.balas = new ArrayList<AtirarMunicao>();
-		Jogo.lava = new ArrayList<BlocoDeDano>();
+		Jogo.npc = new ArrayList<NPC>();
 		Jogo.morte = new ArrayList<InimigoMorte>();
 
 		Jogo.spritesheet = new Spritesheet("/Spritesheet.png");

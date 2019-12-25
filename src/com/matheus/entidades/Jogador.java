@@ -23,6 +23,7 @@ public class Jogador extends Entidade {
 	private BufferedImage jogadorAtingido;
 	public boolean sofrendoDano = false;
 	public int sofrendoDanoFrames = 0;
+	public boolean colidindoComNPC=false;
 
 	public int velDisparo = 10, ultDisparo = 0;
 	public boolean podeAtirar = true;
@@ -155,6 +156,7 @@ public class Jogador extends Entidade {
 		verificarColisaoMunicao();
 		verificarColisaoArma();
 		verificarColisaoChave();
+		verificarColisaoNPC();
 
 		Camera.x = Camera.clamp(getX() - (Jogo.WIDITH / 2), Mundo.WIDTH_WORD * Jogo.tamanho - Jogo.WIDITH, 0);
 		Camera.y = Camera.clamp(getY() - (Jogo.HEIGHT / 2), Mundo.HEIGHT_WORD * Jogo.tamanho - Jogo.HEIGHT, 0);
@@ -274,6 +276,22 @@ public class Jogador extends Entidade {
 						pegarItem=false;
 					}else {
 						Jogo.mensagem="Presione P para pegar a chave";
+						Jogo.exibirMensagem = true;
+					}
+					
+				}
+			}
+		}
+	}
+	
+	public void verificarColisaoNPC() {
+		for (int i = 0; i < Jogo.npc.size(); i++) {
+			Entidade atual = Jogo.npc.get(i);
+			if (atual instanceof NPC) {
+				if (Entidade.isColidding(this, atual)) {
+					colidindoComNPC=true;
+					if (!Jogo.conversar) {
+						Jogo.mensagem="Presione Q para conversar";
 						Jogo.exibirMensagem = true;
 					}
 					

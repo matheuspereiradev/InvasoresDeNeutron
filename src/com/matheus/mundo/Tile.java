@@ -26,6 +26,7 @@ public class Tile {
 	public static BufferedImage TILE_CHAVE_2=Jogo.spritesheet.getSprite(176, 32, 16, 16);
 	public static BufferedImage TILE_CHAVE_ICONE=Jogo.spritesheet.getSprite(192, 48, 16, 16);
 	public static BufferedImage TILE_ARMA_ICONE=Jogo.spritesheet.getSprite(192, 64, 16, 16);
+	public static BufferedImage CAIXADEDIALOGO=Jogo.spritesheet.getSprite(304, 112, 272, 48);
 	
 	private BufferedImage sprite;
 	private int x, y;
