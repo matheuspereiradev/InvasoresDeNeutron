@@ -14,16 +14,18 @@ public class UI {
 
 	public int quantidadeDeCoracoes = 11;
 	public int CoracoesMax = 11;
+	public Dialogos dialogos;
+	
+	public UI() {
+		dialogos=new Dialogos();
+	}
 
 	public void atualizar() {
 		quantidadeDeCoracoes = (int) (Jogo.jogador.vida / 10) + 1;
-		
-		if(Jogo.pularCena) {
-			Jogo.estado_cena=Jogo.jogando;
-			Jogo.jogador.colidindoComNPC=false;
-			Jogo.conversar=false;
-			Jogo.pularCena=false;
+		if(Jogo.estado_cena==Jogo.dialogo) {
+			dialogos.atualizar();
 		}
+		
 	}
 	
 	public void renderizar(Graphics g) {
@@ -42,7 +44,7 @@ public class UI {
 		}
 		
 		if(Jogo.estado_cena==Jogo.dialogo) {
-			dialogo(g);
+			dialogos.renderizar(g);
 		}
 		
 		for (int i = 0; i < CoracoesMax; i ++) {
@@ -53,15 +55,6 @@ public class UI {
 		}
 	}
 
-	private void dialogo(Graphics g) {
-		switch (Jogo.numfase) {
-		case 1:
-			g.drawImage(Tile.CAIXADEDIALOGO, 15, 150, null);
-			g.setColor(Color.black);
-			g.drawString("Oi me chamo Bill!!",40 , 160);
-			break;
-		}
-		
-	}
+	
 
 }

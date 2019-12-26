@@ -457,7 +457,6 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 	}
 
 	public void exibirMsg(Graphics g) {
-		
 		g.drawString(mensagem, 300, 200);
 		exibirMensagem=false;
 	}
