@@ -1,7 +1,5 @@
 package com.matheus.graficos;
 
-
-import java.awt.Color;
 import java.awt.Graphics;
 
 import com.matheus.entidades.Entidade;
