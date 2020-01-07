@@ -25,6 +25,8 @@ import java.util.List;
 import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import com.matheus.entidades.*;
 import com.matheus.fases.Fases;
 import com.matheus.graficos.Spritesheet;
@@ -64,13 +66,19 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 	private int framesGameOver = 0, maxGameOver = 20;
 	private boolean restartJogo = false;
 	public static boolean mute = true;
-	public static boolean conversar=false;
+	public static boolean conversandoComNPC=false;
 	public boolean saveGame = false;
 	public static boolean exibirMensagem=false;
 	public static String mensagem;
+	public static boolean exibeRelogio=false;
 	public static Fases fase;
+	public static int temporizadorS=0,temporizadorM=0,contadorDeSegundos=0;
 	public Menu menu;
 	public UI ui;
+	public static int tipoDialogo;
+	public static final int DIALOGO_CONVERSA=1, DIALOGO_APRESENTACAO=2; 
+	public static boolean noite=false;
+	public static int totalVidas=5;
 	
 	
 	// cutscene
@@ -225,6 +233,9 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 
 		/* renderização do jogo */
 		// Graphics2D g2 = (Graphics2D) g;
+		
+		
+		
 		mundo.renderizar(g);
 
 		Collections.sort(entidades, Entidade.entidadeSorter);
@@ -251,6 +262,12 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 		}
 		// aplicarLuz();
 
+		if (noite) {
+			Color cor=new Color(0,20,173,30);
+			g.setColor(cor);
+			g.fillRect(0, 0, Jogo.WIDITH, Jogo.HEIGHT);
+		}
+		
 		ui.renderizar(g);
 
 		g.dispose();// limpar dados da imagem que nao foram usados
@@ -260,8 +277,15 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 		g.drawImage(background, 0, 0, WIDITH * SCALE, HEIGHT * SCALE, null);
 			
 		// aqui para ficar em cima da imagem de background
+		if(exibeRelogio) {
+		g.setFont(new Font("Arial", Font.BOLD, 35));
+		g.setColor(Color.WHITE);
+		g.drawString(Jogo.temporizadorM+":"+Jogo.temporizadorS, 460, 72);
+		}
+		
 		g.setFont(new Font("Arial", Font.BOLD, 25));
 		g.setColor(Color.WHITE);
+		g.drawString("x"+Jogo.totalVidas, 850, 58);
 		g.drawString("Munição: " + Jogo.jogador.numeroDeBalas, 36, 72);
 		g.drawString("Vida:" + (int) Jogo.jogador.vida + "/" + Jogador.MAX_LIFE, 200, 72);
 		if (status == "GAME_OVER") {
@@ -315,8 +339,13 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 			lastTime = now;// substitui a ultima execução do while pelo tempo atual
 
 			if (delta >= 1) {
-				atualizar();
-				renderizar();
+				try {
+					atualizar();
+					renderizar();
+				}catch (Exception ex)	{
+					JOptionPane.showMessageDialog(null, "Ocorreu algum erro inesperado, o jogo será encerrado");
+					System.exit(0);
+				}	
 				frames++;
 				delta--;
 			}
@@ -396,12 +425,16 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 		if (e.getKeyCode() == KeyEvent.VK_P) {
 			Jogo.jogador.pegarItem=true;
 		}
+		
+		if (e.getKeyCode() == KeyEvent.VK_N) {
+			Jogo.noite=!Jogo.noite;
+		}
 		if (e.getKeyCode() == KeyEvent.VK_V) {
 			Jogo.jogador.vida=0;
 		}if (e.getKeyCode() == KeyEvent.VK_Q) {
 			if(Jogo.jogador.colidindoComNPC) {
 				estado_cena=dialogo;
-				conversar=true;
+				conversandoComNPC=true;
 			}
 		}
 

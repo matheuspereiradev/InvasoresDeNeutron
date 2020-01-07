@@ -8,38 +8,49 @@ import com.matheus.mundo.Tile;
 
 public class Dialogos{
 	
-	public String [] dialogosFase1=new String[3];
+	public String [] dialogosAleatorios;
 	public int numdialogo=0;
 	
 	public Dialogos() {
-		dialogosFase1[0]="OI me chamo roberto";
-		dialogosFase1[1]="Prazer roberto";
-		dialogosFase1[2]="Você sabe o que está acontecendo";
-		
+		dialogosAleatorios=new String []{"Oi é um prazer lhe ver por aqui", "Estou cansado, não aguento mais trabalhar"
+				,"Malditos aliens, alguém tem que fazer algo", "Oi me chamo Ariel","Estou faminto", "Somos apenas escravos nesse mundo"
+				, "Pensando bem, eu até gosto dos aliens", "Que mundo caótico","Pode me chamar de K\\so isso"};
+		numdialogo=Jogo.rand.nextInt(dialogosAleatorios.length);
 		
 	}
 	
 	public void atualizar() {
 		if(Jogo.pularCena) {
-			numdialogo++;
-			if(numdialogo>=dialogosFase1.length) {
-				Jogo.estado_cena=Jogo.jogando;
-				Jogo.jogador.colidindoComNPC=false;
-				Jogo.conversar=false;
-				Jogo.pularCena=false;
-				numdialogo=0;
-			}
+			numdialogo=Jogo.rand.nextInt(dialogosAleatorios.length);
+			Jogo.estado_cena=Jogo.jogando;
+			Jogo.jogador.colidindoComNPC=false;
+			Jogo.conversandoComNPC=false;
 			Jogo.pularCena=false;
+				
 		}
 	}
 	
 	public void renderizar(Graphics g) {
 		switch (Jogo.numfase) {
 		case 1:
-			g.drawImage(Tile.CAIXADEDIALOGO, 15, 150, null);
-			g.setColor(Color.black);
-			g.drawString(dialogosFase1[numdialogo],40 , 160);
+			escreverDialogo(dialogosAleatorios[numdialogo],g);
 			break;
+		}
+		
+	}
+
+	private void escreverDialogo(String frase, Graphics g) {
+		g.drawImage(Tile.CAIXADEDIALOGO, 15, 150, null);
+		g.setColor(Color.black);
+		
+		if(frase.contains("\\")) {
+			String linha1, linha2;
+			linha1=frase.substring(0, frase.indexOf("\\"));
+			linha2=frase.substring(frase.indexOf("\\")+1,frase.length());
+			g.drawString(linha1,42 , 165);
+			g.drawString(linha2,42 , 175);
+		}else {
+			g.drawString(frase,42 , 165);
 		}
 		
 	}

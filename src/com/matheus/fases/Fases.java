@@ -16,50 +16,42 @@ public class Fases {
 			Jogo.pularFase=logicaFase2();
 			break;
 		case 3:
-			
+			Jogo.pularFase=logicaFase3();
 			break;
 
 		}
 	}
 	
+	private boolean logicaFase3() {
+			Jogo.contadorDeSegundos++;
+			if(Jogo.contadorDeSegundos==60) {
+				Jogo.temporizadorS++;
+				Jogo.contadorDeSegundos=0;
+				if(Jogo.temporizadorS==60) {
+					Jogo.temporizadorM++;
+					Jogo.temporizadorS=0;
+				}
+			}
+			
+			//InimigoMorte.dano=80;
+			
+			if (Jogo.temporizadorM==1 && Jogo.temporizadorS==0) {
+				Jogo.exibeRelogio=false;
+				return true;
+			}
+			
+	return false;	
+	}
+
 	public boolean logicaFase1() {
-		//verificar impacto com a porta
-		if (Jogador.up && Mundo.isDoor(Jogo.jogador.getX(), (int) (Jogo.jogador.y - Jogo.jogador.speed))) {
-			//verifica se o jogador possui a chave
-			if(Jogador.possuiChave) {
-				Jogador.possuiChave=false;
-				return true;
-			}else {
-				Jogo.mensagem="Você não possui a chave da porta";
-				Jogo.exibirMensagem=true;
-			}
-		} else if (Jogador.down && Mundo.isDoor(Jogo.jogador.getX(), (int) (Jogo.jogador.y + Jogo.jogador.speed))) {
-			if(Jogador.possuiChave) {
-				Jogador.possuiChave=false;
-				return true;
-			}else {
-				Jogo.mensagem="Você não possui a chave da porta";
-				Jogo.exibirMensagem=true;
-			}
-		}else if (Jogador.left && Mundo.isDoor((int) (Jogo.jogador.x - Jogo.jogador.speed), Jogo.jogador.getY())) {
-			if(Jogador.possuiChave) {
-				Jogador.possuiChave=false;
-				return true;
-			}else {
-				Jogo.mensagem="Você não possui a chave da porta";
-				Jogo.exibirMensagem=true;
-			}
-		} else if (Jogador.right && Mundo.isDoor((int) (Jogo.jogador.x + Jogo.jogador.speed), Jogo.jogador.getY())) {
-			if(Jogador.possuiChave) {
-				Jogador.possuiChave=false;
-				return true;
-			}else {
-				Jogo.mensagem="Você não possui a chave da porta";
-				Jogo.exibirMensagem=true;
-			}
+		if(Jogador.verificaColisaoPorta()==1) {
+			Jogo.mensagem="Você não possui a chave da porta";
+			Jogo.exibirMensagem=true;
+		}else if(Jogador.verificaColisaoPorta()==2){
+			Jogador.possuiChave=false;
+			return true;
 		}
-		//
-		
+		//return false;
 		return false;
 	}	
 	

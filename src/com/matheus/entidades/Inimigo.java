@@ -19,6 +19,8 @@ public class Inimigo extends Entidade {
 	protected List<Node> caminho;
 	protected int power;
 	
+	public static int dano=1;
+	
 	public Inimigo(double x, double y, int width, int height, BufferedImage sprite) {
 		super(x, y, width, height, sprite);
 		
@@ -91,7 +93,7 @@ public class Inimigo extends Entidade {
 
 	public void testarAtaqueNoPlayer() {
 		if (Jogo.rand.nextInt(100) < power) {
-			Jogo.jogador.vida--;
+			Jogo.jogador.vida=Jogo.jogador.vida-dano;
 			Jogo.jogador.sofrendoDano = true;
 			if (!Jogo.mute) {
 				Sons.danoSong.play();

@@ -10,12 +10,12 @@ import com.matheus.mundo.Mundo;
 
 public class InimigoAlien extends Inimigo {
 
-	private double speed = 1.2;
+	public static double speed = 0.9;
 	private int maskX = 8, maskY = 8, maskW = 10, maskH = 10;
 	private int dir_up = 1, dir_right = 0, dir_down = 2, dir_left = 3;
 	private int direcao = dir_down;
 	private int index = 0, frames = 0, maxFrames = 10, maxIndex = 2, tamanhoArray = 3;
-	private int distanciaDeAlcanceDoAtaque = 60;
+	public static int distanciaDeAlcanceDoAtaque = 60;
 
 	int sortearDirecao = Jogo.rand.nextInt(4);
 	int tempoDirecao = 0, maxTempoDirecao = 40;

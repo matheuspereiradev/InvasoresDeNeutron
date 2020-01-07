@@ -13,6 +13,7 @@ public class UI {
 	public int quantidadeDeCoracoes = 11;
 	public int CoracoesMax = 11;
 	public Dialogos dialogos;
+
 	
 	public UI() {
 		dialogos=new Dialogos();
@@ -33,7 +34,9 @@ public class UI {
 	g.fillRect(12, 5, 82, 10);
 	g.setColor(new Color(0, 127, 14));
 	g.fillRect(12, 5, (int) ((Jogo.jogador.vida / Jogador.MAX_LIFE) * 82), 10);*/
-
+		g.drawImage(Tile.VIDA_CORACAO_VERDE, 265, 10, null);
+		
+		
 		if(Jogador.possuiChave) {
 			g.drawImage(Tile.TILE_CHAVE_ICONE, 145, 200,null);
 		}

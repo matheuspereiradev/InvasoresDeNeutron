@@ -61,13 +61,16 @@ public class Jogador extends Entidade {
 
 	public void atualizar() {
 
-		if (vida <= 0) {
+		if (vida <= 0 && Jogo.totalVidas==0) {
 			/*
 			 * Jogo.entidades.clear(); Jogo.inimigo.clear(); Jogo.lifePack.clear();
 			 * Jogo.municao.clear(); Jogo.iniciarJogo();
 			 */
 			Jogo.jogador.vida = 0.0;
 			Jogo.status = "GAME_OVER";
+		}else if (vida <= 0 && Jogo.totalVidas>0) {
+			Mundo.proximaFase();
+			Jogo.totalVidas--;
 		}
 
 		if (!podeAtirar) {
@@ -79,20 +82,20 @@ public class Jogador extends Entidade {
 		}
 
 		movimentando = false;
-		if (up && Mundo.isFree(getX(), (int) (y - speed))) {
+		if (up && Mundo.isFree(getX(), (int) (y - speed)) && verificaColisaoPorta()==0) {
 			movimentando = true;
 			ultimoClicado = up_dir;
 			y -= speed;
-		} else if (down && Mundo.isFree(getX(), (int) (y + speed))) {
+		} else if (down && Mundo.isFree(getX(), (int) (y + speed)) && verificaColisaoPorta()==0) {
 			movimentando = true;
 			ultimoClicado = down_dir;
 			y += speed;
 		}
-		if (left && Mundo.isFree((int) (x - speed), getY())) {
+		if (left && Mundo.isFree((int) (x - speed), getY()) && verificaColisaoPorta()==0) {
 			movimentando = true;
 			ultimoClicado = left_dir;
 			x -= speed;
-		} else if (right && Mundo.isFree((int) (x + speed), getY())) {
+		} else if (right && Mundo.isFree((int) (x + speed), getY()) && verificaColisaoPorta()==0) {
 			movimentando = true;
 			ultimoClicado = right_dir;
 			x += speed;
@@ -284,13 +287,46 @@ public class Jogador extends Entidade {
 		}
 	}
 	
+	public static int verificaColisaoPorta() {
+		//verificar impacto com a porta
+				if (Jogador.up && Mundo.isDoor(Jogo.jogador.getX(), (int) (Jogo.jogador.y - Jogo.jogador.speed))) {
+					//verifica se o jogador possui a chave
+					if(Jogador.possuiChave) {
+						return 2;
+					}else {
+						return 1;
+					}
+				} else if (Jogador.down && Mundo.isDoor(Jogo.jogador.getX(), (int) (Jogo.jogador.y + Jogo.jogador.speed))) {
+					if(Jogador.possuiChave) {
+						return 2;
+					}else {
+						return 1;
+					}
+				}else if (Jogador.left && Mundo.isDoor((int) (Jogo.jogador.x - Jogo.jogador.speed), Jogo.jogador.getY())) {
+					if(Jogador.possuiChave) {
+						return 2;
+					}else {
+						return 1;
+					}
+				} else if (Jogador.right && Mundo.isDoor((int) (Jogo.jogador.x + Jogo.jogador.speed), Jogo.jogador.getY())) {
+					if(Jogador.possuiChave) {
+						return 2;
+					}else {
+						return 1;
+					}
+				}
+				
+				return 0;
+
+	}
+	
 	public void verificarColisaoNPC() {
 		for (int i = 0; i < Jogo.npc.size(); i++) {
 			Entidade atual = Jogo.npc.get(i);
 			if (atual instanceof NPC) {
 				if (Entidade.isColidding(this, atual)) {
 					colidindoComNPC=true;
-					if (!Jogo.conversar) {
+					if (!Jogo.conversandoComNPC) {
 						Jogo.mensagem="Presione Q para conversar";
 						Jogo.exibirMensagem = true;
 					}

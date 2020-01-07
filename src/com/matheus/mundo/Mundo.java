@@ -48,6 +48,12 @@ public class Mundo {
 						} else if (pixels[atual] == 0xFF38FF2D) {
 							tiles[atual] = new FloorTile(xx * Jogo.tamanho, yy * Jogo.tamanho, Tile.TILE_FLOOR);
 							// chao
+						}else if (pixels[atual] == 0xFF1EFF61) {
+							tiles[atual] = new FloorTile(xx * Jogo.tamanho, yy * Jogo.tamanho, Tile.TILE_FLOOR_NIGHT);
+							// chao
+						}else if (pixels[atual] == 0xFF496629) {
+							tiles[atual] = new WallTile(xx * Jogo.tamanho, yy * Jogo.tamanho, Tile.TILE_ARVORE_NIGHT);
+							// Arvore
 						}
 						
 									
@@ -278,8 +284,16 @@ public class Mundo {
 			break;
 		case 3:
 			Jogo.mundo = new Mundo("/fases/fase3.png");
+			Jogo.contadorDeSegundos=0;
+			Jogo.temporizadorM=0;
+			Jogo.temporizadorS=0;
+			Jogo.exibeRelogio=true;
 			Jogo.pularFase=false;
 			break;	
+		case 4:
+			Jogo.mundo = new Mundo("/fases/fase4.png");
+			Jogo.pularFase=false;
+			break;
 		}
 	}
 	
@@ -318,6 +332,8 @@ public class Mundo {
 		case 2:
 			return Tile.TILE_FLOOR;	
 		case 3:
+			return Tile.TILE_FLOOR;	
+		case 4:
 			return Tile.TILE_FLOOR;	
 		}
 		
