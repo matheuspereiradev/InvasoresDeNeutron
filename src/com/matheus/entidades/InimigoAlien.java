@@ -1,5 +1,6 @@
 package com.matheus.entidades;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -11,7 +12,7 @@ import com.matheus.mundo.Mundo;
 public class InimigoAlien extends Inimigo {
 
 	public static double speed = 0.9;
-	private int maskX = 8, maskY = 8, maskW = 10, maskH = 10;
+	private int maskX = 4, maskY = 4, maskW = 10, maskH = 10;
 	private int dir_up = 1, dir_right = 0, dir_down = 2, dir_left = 3;
 	private int direcao = dir_down;
 	private int index = 0, frames = 0, maxFrames = 10, maxIndex = 2, tamanhoArray = 3;
@@ -177,10 +178,10 @@ public class InimigoAlien extends Inimigo {
 			g.drawImage(Entidade.inimigoAlienDano, this.getX() - Camera.x, this.getY() - Camera.y, null);
 		}
 		// para vizualizar melhor oq esta acontecdo descomenta
-		// super.renderizar(g);
-		// g.setColor(Color.BLUE);
-		// g.fillRect(this.getX()+maskX-Camera.x, this.getY()+maskY-Camera.y,
-		// maskW,maskH);
+		 super.renderizar(g);
+		 g.setColor(Color.BLUE);
+		 g.fillRect(this.getX()+maskX-Camera.x, this.getY()+maskY-Camera.y,
+		 maskW,maskH);
 	}
 
 }
