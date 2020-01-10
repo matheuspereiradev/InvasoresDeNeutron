@@ -118,7 +118,13 @@ public class Mundo {
 							tiles[atual] = new FloorTile(xx * Jogo.tamanho, yy * Jogo.tamanho,
 									Tile.TILE_FLOOR_TERRA_CENTRAL);
 							// areia
-						} else if (pixels[atual] == 0xFFFF6A00) {
+						}else if(pixels[atual] ==0xFFDD9BFF) {
+							Mago mago=new Mago(xx * Jogo.tamanho, yy * Jogo.tamanho, Jogo.tamanho,
+									Jogo.tamanho, null);
+							Jogo.entidades.add(mago);
+						}
+						
+						else if (pixels[atual] == 0xFFFF6A00) {
 							InimigoMorte morte = new InimigoMorte(xx * Jogo.tamanho, yy * Jogo.tamanho, Jogo.tamanho,
 									Jogo.tamanho, null);
 							Jogo.entidades.add(morte);
@@ -284,10 +290,11 @@ public class Mundo {
 			break;
 		case 3:
 			Jogo.mundo = new Mundo("/fases/fase3.png");
-			Jogo.contadorDeSegundos=0;
+			Jogo.contadorDeSegundos=60;
 			Jogo.temporizadorM=0;
-			Jogo.temporizadorS=0;
+			Jogo.temporizadorS=10;
 			Jogo.exibeRelogio=true;
+			Jogo.noite=true;
 			Jogo.pularFase=false;
 			break;	
 		case 4:

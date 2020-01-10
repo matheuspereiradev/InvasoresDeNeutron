@@ -59,7 +59,7 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 	public static Jogador jogador;
 	public static Mundo mundo;
 	public static Random rand;
-	public static int numfase = 1;
+	public static int numfase;
 	public static String status = "MENU";
 	public boolean exibirMensagemGameOver = false;
 	public static boolean algumaApresentacao;//verifica se existe alguma apreentaçao ou dialogo
@@ -214,6 +214,9 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 				restartJogo = false;
 				numfase = 1;
 				Mundo.proximaFase();
+				totalVidas=5;
+				noite=false;
+				exibeRelogio=false;
 				status = "NORMAL";
 			}
 		} else if (status.equals("MENU")) {
@@ -263,7 +266,7 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 		// aplicarLuz();
 
 		if (noite) {
-			Color cor=new Color(0,20,173,30);
+			Color cor=new Color(0,100,250,30);
 			g.setColor(cor);
 			g.fillRect(0, 0, Jogo.WIDITH, Jogo.HEIGHT);
 		}
@@ -280,7 +283,8 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 		if(exibeRelogio) {
 		g.setFont(new Font("Arial", Font.BOLD, 35));
 		g.setColor(Color.WHITE);
-		g.drawString(Jogo.temporizadorM+":"+Jogo.temporizadorS, 460, 72);
+		
+		g.drawString("0"+Jogo.temporizadorM+":"+Jogo.temporizadorS, 460, 72);
 		}
 		
 		g.setFont(new Font("Arial", Font.BOLD, 25));
@@ -452,6 +456,12 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 			Jogador.right = false;
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
 			Jogador.left = false;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_P) {
+			Jogo.jogador.pegarItem=false;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_Q) {
+			conversandoComNPC=false;
 		}
 
 	}

@@ -39,7 +39,7 @@ public class Dialogos{
 		
 	}
 
-	private void escreverDialogo(String frase, Graphics g) {
+	public static void escreverDialogo(String frase, Graphics g) {
 		g.drawImage(Tile.CAIXADEDIALOGO, 15, 150, null);
 		g.setColor(Color.black);
 		

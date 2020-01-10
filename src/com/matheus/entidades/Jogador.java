@@ -331,7 +331,10 @@ public class Jogador extends Entidade {
 						Jogo.exibirMensagem = true;
 					}
 					
+				} else {
+					colidindoComNPC=false;
 				}
+				
 			}
 		}
 	}

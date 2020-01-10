@@ -7,6 +7,9 @@ import com.matheus.mundo.Mundo;
 
 public class Fases {
 	
+	public int statusCutScene=1,statusJogando=0;
+	public int status=statusJogando;
+	
 	public void atualizar() {
 		switch (Jogo.numfase) {
 		case 1:
@@ -23,6 +26,7 @@ public class Fases {
 	}
 	
 	private boolean logicaFase3() {
+		/* CONTADOR PROGRESSIVO
 			Jogo.contadorDeSegundos++;
 			if(Jogo.contadorDeSegundos==60) {
 				Jogo.temporizadorS++;
@@ -35,10 +39,29 @@ public class Fases {
 			
 			//InimigoMorte.dano=80;
 			
-			if (Jogo.temporizadorM==1 && Jogo.temporizadorS==0) {
+			if (Jogo.temporizadorM==1 && Jogo.temporizadorS==20) {
 				Jogo.exibeRelogio=false;
+				Jogo.noite=false;
 				return true;
+			}*/
+		//CONTADOR REGRESSIVO
+		Jogo.contadorDeSegundos--;
+		if(Jogo.contadorDeSegundos==0) {
+			Jogo.temporizadorS--;
+			Jogo.contadorDeSegundos=60;
+			if(Jogo.temporizadorS<0) {
+				Jogo.temporizadorM--;
+				Jogo.temporizadorS=60;
 			}
+		}
+		System.out.println(Jogo.temporizadorM+":"+Jogo.temporizadorS+":"+Jogo.contadorDeSegundos);
+		//InimigoMorte.dano=80;
+		
+		if (Jogo.temporizadorM<=0 && Jogo.temporizadorS<=0) {
+			Jogo.exibeRelogio=false;
+			Jogo.noite=false;
+			return true;
+		}
 			
 	return false;	
 	}

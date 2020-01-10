@@ -93,7 +93,13 @@ public class Inimigo extends Entidade {
 
 	public void testarAtaqueNoPlayer() {
 		if (Jogo.rand.nextInt(100) < power) {
-			Jogo.jogador.vida=Jogo.jogador.vida-dano;
+			
+			if(Jogo.noite) {
+				Jogo.jogador.vida=Jogo.jogador.vida-(dano*3);
+			}else {
+				Jogo.jogador.vida=Jogo.jogador.vida-dano;
+			}
+			
 			Jogo.jogador.sofrendoDano = true;
 			if (!Jogo.mute) {
 				Sons.danoSong.play();
