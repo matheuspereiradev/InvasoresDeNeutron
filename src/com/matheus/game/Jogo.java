@@ -272,6 +272,7 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 		}
 		
 		ui.renderizar(g);
+		fase.renderizar(g);
 
 		g.dispose();// limpar dados da imagem que nao foram usados
 		g = bs.getDrawGraphics();

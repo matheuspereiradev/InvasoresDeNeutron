@@ -1,11 +1,16 @@
 package com.matheus.fases;
 
+import java.awt.Graphics;
+
 import com.matheus.entidades.Jogador;
 import com.matheus.game.Jogo;
 import com.matheus.mundo.Camera;
 import com.matheus.mundo.Mundo;
 
 public class Fases {
+	
+	public static boolean apresentacao=false;
+	public static boolean colidindoComMago=false;
 	
 	public int statusCutScene=1,statusJogando=0;
 	public int status=statusJogando;
@@ -58,9 +63,14 @@ public class Fases {
 		//InimigoMorte.dano=80;
 		
 		if (Jogo.temporizadorM<=0 && Jogo.temporizadorS<=0) {
+			Jogo.jogador.vida=0;
+		  
+		}
+		
+		if(colidindoComMago) {
 			Jogo.exibeRelogio=false;
 			Jogo.noite=false;
-			return true;
+			return true; 
 		}
 			
 	return false;	
@@ -112,6 +122,13 @@ public class Fases {
 				Jogo.pularCena=false;
 				Jogo.estado_cena = Jogo.jogando;
 			}
+		}
+		
+	}
+
+	public void renderizar(Graphics g) {
+		if(apresentacao) {
+			
 		}
 		
 	}	

@@ -291,8 +291,8 @@ public class Mundo {
 		case 3:
 			Jogo.mundo = new Mundo("/fases/fase3.png");
 			Jogo.contadorDeSegundos=60;
-			Jogo.temporizadorM=0;
-			Jogo.temporizadorS=10;
+			Jogo.temporizadorM=1;
+			Jogo.temporizadorS=30;
 			Jogo.exibeRelogio=true;
 			Jogo.noite=true;
 			Jogo.pularFase=false;

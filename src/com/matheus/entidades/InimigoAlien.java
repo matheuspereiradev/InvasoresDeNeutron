@@ -1,6 +1,5 @@
 package com.matheus.entidades;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -178,10 +177,10 @@ public class InimigoAlien extends Inimigo {
 			g.drawImage(Entidade.inimigoAlienDano, this.getX() - Camera.x, this.getY() - Camera.y, null);
 		}
 		// para vizualizar melhor oq esta acontecdo descomenta
-		 super.renderizar(g);
-		 g.setColor(Color.BLUE);
-		 g.fillRect(this.getX()+maskX-Camera.x, this.getY()+maskY-Camera.y,
-		 maskW,maskH);
+		// super.renderizar(g);
+		 //g.setColor(Color.BLUE);
+		// g.fillRect(this.getX()+maskX-Camera.x, this.getY()+maskY-Camera.y,
+		// maskW,maskH);
 	}
 
 }
