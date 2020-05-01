@@ -139,7 +139,7 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 		jogador = new Jogador(0, 0, 16, 16, spritesheet.getSprite(0, 0, tamanho, tamanho));
 		entidades.add(jogador);
 		//mundo = new Mundo("/fases/fase1.png");
-		numfase=4;
+		numfase=1;
 		Mundo.proximaFase();
 		fase=new Fases(); 
 
