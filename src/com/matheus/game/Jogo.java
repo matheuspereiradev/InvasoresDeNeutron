@@ -285,8 +285,12 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 		g.setFont(new Font("Arial", Font.BOLD, 35));
 		g.setColor(Color.WHITE);
 		
-		g.drawString("0"+Jogo.temporizadorM+":"+Jogo.temporizadorS, 460, 72);
+		g.drawString(String.format("%02d", Jogo.temporizadorM)+":"+String.format("%02d", Jogo.temporizadorS), 460, 72);
 		}
+		
+		g.setFont(new Font("Arial", Font.BOLD, 20));
+		g.setColor(Color.WHITE);
+		g.drawString("lvl.:"+Jogo.numfase, 370, 72);
 		
 		g.setFont(new Font("Arial", Font.BOLD, 25));
 		g.setColor(Color.WHITE);

@@ -36,7 +36,6 @@ public class UI {
 	g.fillRect(12, 5, (int) ((Jogo.jogador.vida / Jogador.MAX_LIFE) * 82), 10);*/
 		g.drawImage(Tile.VIDA_CORACAO_VERDE, 265, 10, null);
 		
-		
 		if(Jogador.possuiChave) {
 			g.drawImage(Tile.TILE_CHAVE_ICONE, 145, 200,null);
 		}

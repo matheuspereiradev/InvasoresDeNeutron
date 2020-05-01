@@ -10,7 +10,7 @@ import com.matheus.mundo.Mundo;
 public class Fases {
 	
 	public static boolean apresentacao=false;
-	public static boolean colidindoComMago=false;
+	
 	
 	public int statusCutScene=1,statusJogando=0;
 	public int status=statusJogando;
@@ -59,15 +59,14 @@ public class Fases {
 				Jogo.temporizadorS=60;
 			}
 		}
-		System.out.println(Jogo.temporizadorM+":"+Jogo.temporizadorS+":"+Jogo.contadorDeSegundos);
-		//InimigoMorte.dano=80;
+		
 		
 		if (Jogo.temporizadorM<=0 && Jogo.temporizadorS<=0) {
 			Jogo.jogador.vida=0;
 		  
 		}
 		
-		if(colidindoComMago) {
+		if(Jogador.colidindoComMago) {
 			Jogo.exibeRelogio=false;
 			Jogo.noite=false;
 			return true; 
@@ -127,6 +126,7 @@ public class Fases {
 	}
 
 	public void renderizar(Graphics g) {
+		
 		if(apresentacao) {
 			
 		}

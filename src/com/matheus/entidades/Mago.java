@@ -99,7 +99,7 @@ public class Mago extends Entidade{
 		if(colisaoComJogador(this.getX(), this.getY(), this.maskX, this.maskY, this.maskW, this.maskH)) {
 			//Jogo.mensagem="Presione Q para falar com o mago";
 			//Jogo.exibirMensagem=true;
-			Fases.colidindoComMago=true;
+			Jogador.colidindoComMago=true;
 		};
 	}
 

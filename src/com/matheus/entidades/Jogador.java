@@ -35,6 +35,7 @@ public class Jogador extends Entidade {
 	public static boolean possuiChave=false;
 	public boolean pegarItem=false;
 	public boolean atirando = false;
+	public static boolean colidindoComMago=false;
 
 	public Jogador(int x, int y, int width, int height, BufferedImage sprite) {
 		super(x, y, width, height, sprite);

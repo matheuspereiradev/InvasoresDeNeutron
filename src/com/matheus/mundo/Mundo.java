@@ -9,6 +9,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import com.matheus.entidades.*;
 import com.matheus.entidades.especiais.Chave;
+import com.matheus.fases.Fases;
 import com.matheus.game.Jogo;
 import com.matheus.game.Sons;
 import com.matheus.graficos.Spritesheet;
@@ -294,6 +295,7 @@ public class Mundo {
 			Jogo.temporizadorM=1;
 			Jogo.temporizadorS=30;
 			Jogo.exibeRelogio=true;
+			Jogador.colidindoComMago=false;
 			Jogo.noite=true;
 			Jogo.pularFase=false;
 			break;	
