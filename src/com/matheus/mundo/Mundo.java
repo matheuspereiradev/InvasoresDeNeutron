@@ -200,6 +200,25 @@ public class Mundo {
 			e.printStackTrace();
 		}
 	}
+	
+	public static boolean isFreeDinamico(int xprox, int yprox, int width, int height) {
+		int x1 = xprox / Jogo.tamanho;
+		int y1 = yprox / Jogo.tamanho;
+
+		int x2 = (xprox + width - 1) / Jogo.tamanho;
+		int y2 = yprox / height;
+
+		int x3 = xprox / Jogo.tamanho;
+		int y3 = (yprox + height - 1) / Jogo.tamanho;
+
+		int x4 = (xprox + width - 1) / Jogo.tamanho;
+		int y4 = (yprox + height - 1) / Jogo.tamanho;
+
+		return !((tiles[x1 + (y1 * Mundo.WIDTH_WORD)] instanceof WallTile)
+				|| (tiles[x2 + (y2 * Mundo.WIDTH_WORD)] instanceof WallTile)
+				|| (tiles[x3 + (y3 * Mundo.WIDTH_WORD)] instanceof WallTile)
+				|| (tiles[x4 + (y4 * Mundo.WIDTH_WORD)] instanceof WallTile));
+	}
 
 	public static boolean isFree(int xprox, int yprox) {
 		int x1 = xprox / Jogo.tamanho;
@@ -215,9 +234,9 @@ public class Mundo {
 		int y4 = (yprox + Jogo.tamanho - 2) / Jogo.tamanho;
 
 		return !((tiles[x1 + (y1 * Mundo.WIDTH_WORD)] instanceof WallTile)
-				|| (tiles[x2 + y2 * Mundo.WIDTH_WORD] instanceof WallTile)
-				|| (tiles[x3 + y3 * Mundo.WIDTH_WORD] instanceof WallTile)
-				|| (tiles[x4 + y4 * Mundo.WIDTH_WORD] instanceof WallTile));
+				|| (tiles[x2 + (y2 * Mundo.WIDTH_WORD)] instanceof WallTile)
+				|| (tiles[x3 + (y3 * Mundo.WIDTH_WORD)] instanceof WallTile)
+				|| (tiles[x4 + (y4 * Mundo.WIDTH_WORD)] instanceof WallTile));
 	}
 
 	public static boolean isDoor(int xprox, int yprox) {

@@ -139,7 +139,7 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 		jogador = new Jogador(0, 0, 16, 16, spritesheet.getSprite(0, 0, tamanho, tamanho));
 		entidades.add(jogador);
 		//mundo = new Mundo("/fases/fase1.png");
-		numfase=1;
+		numfase=4;
 		Mundo.proximaFase();
 		fase=new Fases(); 
 
@@ -348,13 +348,15 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 			lastTime = now;// substitui a ultima execução do while pelo tempo atual
 
 			if (delta >= 1) {
-				try {
+				/*try {
 					atualizar();
 					renderizar();
 				}catch (Exception ex)	{
 					JOptionPane.showMessageDialog(null, "Ocorreu algum erro inesperado, o jogo será encerrado");
 					System.exit(0);
-				}	
+				}	*/
+				atualizar();
+				renderizar();
 				frames++;
 				delta--;
 			}

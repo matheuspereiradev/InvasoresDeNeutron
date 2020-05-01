@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 
 import com.matheus.game.Jogo;
 import com.matheus.mundo.Camera;
+import com.matheus.mundo.Mundo;
 
 public class AtirarMunicao extends Entidade{
 
@@ -22,13 +23,20 @@ public class AtirarMunicao extends Entidade{
 	
 	@Override
 	public void atualizar() {
-		x+=dx*speed;
-		y+=dy*speed;
-		curTempoDeDuracao++;
+      if(Mundo.isFreeDinamico((int)(x+(dx*speed)), (int)(y+(dy*speed)), 3, 3)) {
+    	  x+=dx*speed;
+  		  y+=dy*speed;	
+		}
+      else {
+    	  Jogo.balas.remove(this);
+			return;
+		}
+      curTempoDeDuracao++;
 		if(curTempoDeDuracao==tempoDeDuracao) {
 			Jogo.balas.remove(this);
 			return;
-		}
+	  }
+		
 	}
 	
 	@Override
