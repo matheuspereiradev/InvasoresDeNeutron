@@ -231,7 +231,7 @@ public class Jogador extends Entidade {
 			Entidade atual = Jogo.municao.get(i);
 			if (atual instanceof Municao) {
 				if (Entidade.isColidding(this, atual)) {
-					Jogo.jogador.numeroDeBalas += 15;
+					Jogo.jogador.numeroDeBalas += 500;
 					Jogo.entidades.remove(atual);
 					Jogo.municao.remove(atual);
 				}

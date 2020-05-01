@@ -23,7 +23,7 @@ public class AtirarMunicao extends Entidade{
 	
 	@Override
 	public void atualizar() {
-      if(Mundo.isFreeDinamico((int)(x+(dx*speed)), (int)(y+(dy*speed)), 3, 3)) {
+      if(Mundo.isFreeDinamico((int)(x+(dx*speed)),(int)( y+(dy*speed)), 3, 3)) {
     	  x+=dx*speed;
   		  y+=dy*speed;	
 		}

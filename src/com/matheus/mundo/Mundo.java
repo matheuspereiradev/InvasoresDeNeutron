@@ -201,18 +201,18 @@ public class Mundo {
 		}
 	}
 	
-	public static boolean isFreeDinamico(int xprox, int yprox, int width, int height) {
+	public static boolean isFreeDinamico(int xprox, int yprox, int wdt, int hgt) {
 		int x1 = xprox / Jogo.tamanho;
 		int y1 = yprox / Jogo.tamanho;
 
-		int x2 = (xprox + width - 1) / Jogo.tamanho;
-		int y2 = yprox / height;
+		int x2 = (xprox + wdt - 1) / Jogo.tamanho;
+		int y2 = yprox / Jogo.tamanho;
 
 		int x3 = xprox / Jogo.tamanho;
-		int y3 = (yprox + height - 1) / Jogo.tamanho;
+		int y3 = (yprox + hgt - 1) / Jogo.tamanho;
 
-		int x4 = (xprox + width - 1) / Jogo.tamanho;
-		int y4 = (yprox + height - 1) / Jogo.tamanho;
+		int x4 = (xprox + wdt - 1) / Jogo.tamanho;
+		int y4 = (yprox + hgt - 1) / Jogo.tamanho;
 
 		return !((tiles[x1 + (y1 * Mundo.WIDTH_WORD)] instanceof WallTile)
 				|| (tiles[x2 + (y2 * Mundo.WIDTH_WORD)] instanceof WallTile)
