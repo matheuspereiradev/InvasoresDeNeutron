@@ -29,11 +29,13 @@ public class AtirarMunicao extends Entidade{
 		}
       else {
     	  Jogo.balas.remove(this);
+    	  Mundo.gerarParticula(100,(int) x,(int) y);
 			return;
 		}
       curTempoDeDuracao++;
 		if(curTempoDeDuracao==tempoDeDuracao) {
 			Jogo.balas.remove(this);
+			Mundo.gerarParticula(500,(int) x,(int) y);
 			return;
 	  }
 		

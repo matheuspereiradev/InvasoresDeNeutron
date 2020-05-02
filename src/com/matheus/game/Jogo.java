@@ -393,23 +393,24 @@ public class Jogo extends Canvas implements Runnable, KeyListener, MouseListener
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
+		if (e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_UP) {
 			if (status.equals("NORMAL"))
 				Jogador.up = true;
 			else
 				menu.up = true;
-		} else if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
+		} else if (e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_DOWN) {
 			if (status.equals("NORMAL"))
 				Jogador.down = true;
 			else
 				menu.down = true;
 		}
 
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
+		if (e.getKeyCode() == KeyEvent.VK_D || e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			Jogador.right = true;
-		} else if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
+		} else if (e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_LEFT) {
 			Jogador.left = true;
 		}
+		
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			jogador.atirando = true;
 		}

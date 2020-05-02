@@ -133,6 +133,7 @@ public class Jogador extends Entidade {
 					}
 					numeroDeBalas--;
 					int dx = 0, dy = 0, px = 0, py = 0;
+					//PX E PY SAO A MASCARA DE QUANTO DEVE BAIXAR
 					if (ultimoClicado == right_dir) {
 						px = 18;
 						py = 9;
@@ -244,9 +245,8 @@ public class Jogador extends Entidade {
 			Entidade atual = Jogo.arma.get(i);
 			if (atual instanceof Arma) {
 				if (Entidade.isColidding(this, atual)) {
-					if (Jogo.jogador.armado) {
+					if (!Jogo.jogador.armado) {
 						Jogo.jogador.numeroDeBalas += 5;
-					} else {
 						Jogo.jogador.armado = true;
 					}
 					Jogo.entidades.remove(atual);

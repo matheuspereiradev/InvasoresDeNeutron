@@ -201,6 +201,13 @@ public class Mundo {
 		}
 	}
 	
+	public static void gerarParticula(int total, int x, int y) {
+		for(int i=0; i<total;i++) 
+		{
+			Jogo.entidades.add(new Particula(x, y, 1, 1, null));
+		};
+	}
+	
 	public static boolean isFreeDinamico(int xprox, int yprox, int wdt, int hgt) {
 		int x1 = xprox / Jogo.tamanho;
 		int y1 = yprox / Jogo.tamanho;
