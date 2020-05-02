@@ -1,5 +1,6 @@
 package com.matheus.mundo;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -201,10 +202,10 @@ public class Mundo {
 		}
 	}
 	
-	public static void gerarParticula(int total, int x, int y) {
+	public static void gerarParticula(int total, int x, int y, Color c) {
 		for(int i=0; i<total;i++) 
 		{
-			Jogo.entidades.add(new Particula(x, y, 1, 1, null));
+			Jogo.entidades.add(new Particula(x, y, 1, 1, null,c));
 		};
 	}
 	

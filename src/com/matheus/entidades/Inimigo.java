@@ -1,5 +1,6 @@
 package com.matheus.entidades;
 
+import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.List;
@@ -8,6 +9,7 @@ import com.matheus.aStar.Node;
 import com.matheus.aStar.Vector2i;
 import com.matheus.game.Jogo;
 import com.matheus.game.Sons;
+import com.matheus.mundo.Mundo;
 
 public class Inimigo extends Entidade {
 
@@ -84,6 +86,7 @@ public class Inimigo extends Entidade {
 					vida--;
 					sofrendoDano = true;
 					Jogo.balas.remove(e);
+					Mundo.gerarParticula(100,(int) x,(int) y, Color.red);
 					return;
 				}
 			}

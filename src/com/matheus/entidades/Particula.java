@@ -12,12 +12,13 @@ public class Particula extends Entidade {
 	 
 	public int tempoVida=3, atualTempo=0, spd = 2;
 	public double dx=0, dy=0;
-
-	public Particula(double x, double y, int width, int height, BufferedImage sprite) {
+	public Color color;
+	public Particula(double x, double y, int width, int height, BufferedImage sprite, Color c) {
 		super(x, y, width, height, sprite);
 		
 		dx=new Random().nextGaussian();
 		dy=new Random().nextGaussian();
+		this.color=c;
 	}
 	
 	@Override
@@ -33,7 +34,7 @@ public class Particula extends Entidade {
 	
 	@Override
 	public void renderizar(Graphics g) {
-		g.setColor(Color.red);
+		g.setColor(this.color);
 		g.fillRect(this.getX()-Camera.x,this.getY()-Camera.y, width, height);
 		
 	}
